@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aswin P.R. — Junior Test Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --card: #16161f;
+    --border: #2a2a3a;
+    --accent: #00e5a0;
+    --accent2: #5b6af8;
+    --text: #e8e8f0;
+    --muted: #6b6b8a;
+    --tag-bg: #1a1a2e;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── GRID NOISE BACKGROUND ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,229,160,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,160,0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 48px;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: -0.5px;
+    color: var(--accent);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 48px 80px;
+    z-index: 1;
+  }
+
+  .hero-inner {
+    max-width: 900px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--tag-bg);
+    border: 1px solid var(--accent2);
+    border-radius: 4px;
+    padding: 6px 14px;
+    font-size: 11px;
+    color: var(--accent2);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--accent2);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  .hero-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(52px, 8vw, 96px);
+    line-height: 0.95;
+    letter-spacing: -3px;
+    margin-bottom: 24px;
+    animation: fadeUp 0.6s ease 0.1s both;
+  }
+
+  .hero-name span { color: var(--accent); }
+
+  .hero-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    margin-bottom: 20px;
+    animation: fadeUp 0.6s ease 0.2s both;
+  }
+
+  .hero-summary {
+    max-width: 600px;
+    color: #9090a8;
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    animation: fadeUp 0.6s ease 0.3s both;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s ease 0.4s both;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    border-radius: 4px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #000;
+    font-weight: 500;
+  }
+
+  .btn-primary:hover {
+    background: #00ffc0;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,229,160,0.3);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  /* ── HERO STATS ── */
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    margin-top: 64px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+    animation: fadeUp 0.6s ease 0.5s both;
+    flex-wrap: wrap;
+  }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 36px;
+    color: var(--accent);
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  /* ── FLOATING ORBS ── */
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.12;
+    pointer-events: none;
+  }
+
+  .orb1 {
+    width: 400px; height: 400px;
+    background: var(--accent);
+    top: 10%; right: 5%;
+    animation: drift 8s ease-in-out infinite alternate;
+  }
+
+  .orb2 {
+    width: 300px; height: 300px;
+    background: var(--accent2);
+    bottom: 20%; right: 25%;
+    animation: drift 10s ease-in-out infinite alternate-reverse;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 100px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    max-width: 60px;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(28px, 4vw, 44px);
+    letter-spacing: -1px;
+    margin-bottom: 48px;
+    line-height: 1.1;
+  }
+
+  /* ── EXPERIENCE ── */
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 56px;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -32px;
+    top: 6px;
+    width: 8px; height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(0,229,160,0.6);
+  }
+
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .timeline-role {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--text);
+  }
+
+  .timeline-company {
+    color: var(--accent);
+  }
+
+  .timeline-date {
+    font-size: 11px;
+    color: var(--muted);
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 4px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .timeline-points {
+    list-style: none;
+    margin-top: 12px;
+  }
+
+  .timeline-points li {
+    color: #9090a8;
+    font-size: 13px;
+    padding: 5px 0 5px 16px;
+    position: relative;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .timeline-points li:hover {
+    color: var(--text);
+    border-color: var(--border);
+  }
+
+  .timeline-points li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 10px;
+  }
+
+  /* ── SKILLS GRID ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .skill-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .skill-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+  }
+
+  .skill-card-label {
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .skill-card-label::before {
+    content: '';
+    width: 4px; height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag {
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+    color: #9090a8;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.03em;
+    transition: all 0.15s;
+  }
+
+  .tag:hover {
+    border-color: var(--accent2);
+    color: var(--accent2);
+  }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .project-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+  }
+
+  .project-card:hover::before {
+    opacity: 1;
+  }
+
+  .project-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+
+  .project-scope {
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    margin-bottom: 14px;
+  }
+
+  .project-desc {
+    color: #9090a8;
+    font-size: 12.5px;
+    line-height: 1.7;
+  }
+
+  .project-num {
+    position: absolute;
+    top: 20px; right: 24px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 48px;
+    color: var(--border);
+    line-height: 1;
+    user-select: none;
+    transition: color 0.2s;
+  }
+
+  .project-card:hover .project-num {
+    color: rgba(0,229,160,0.08);
+  }
+
+  /* ── CERTIFICATIONS ── */
+  .certs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .cert-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    transition: border-color 0.2s;
+  }
+
+  .cert-item:hover {
+    border-color: var(--accent2);
+  }
+
+  .cert-icon {
+    width: 40px; height: 40px;
+    background: var(--tag-bg);
+    border: 1px solid var(--accent2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .cert-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .cert-issuer {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* ── ACHIEVEMENT BANNER ── */
+  .achievement-banner {
+    background: linear-gradient(135deg, rgba(0,229,160,0.08), rgba(91,106,248,0.08));
+    border: 1px solid rgba(0,229,160,0.2);
+    border-radius: 12px;
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  .achievement-icon {
+    font-size: 40px;
+    flex-shrink: 0;
+  }
+
+  .achievement-text strong {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .achievement-text p {
+    color: #9090a8;
+    font-size: 13px;
+  }
+
+  /* ── CONTACT ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .contact-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    text-decoration: none;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.2s;
+  }
+
+  .contact-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+
+  .contact-icon {
+    width: 40px; height: 40px;
+    background: var(--tag-bg);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .contact-label {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .contact-value {
+    font-size: 13px;
+    color: var(--text);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 40px 48px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+
+  footer span { color: var(--accent); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  @keyframes drift {
+    from { transform: translate(0, 0); }
+    to { transform: translate(30px, -40px); }
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 700px) {
+    nav { padding: 16px 20px; }
+    .nav-links { display: none; }
+    .hero, section { padding-left: 20px; padding-right: 20px; }
+    .hero-stats { gap: 24px; }
+    .achievement-banner { flex-direction: column; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">ASWIN.PR</div>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">🟢 Available for opportunities</div>
+    <h1 class="hero-name">ASWIN<br><span>P.R.</span></h1>
+    <p class="hero-title">Junior Test Engineer · Fintech QA · Automation</p>
+    <p class="hero-summary">
+      1+ year building quality assurance for live fintech platforms. Specialising in payment systems, merchant settlement workflows, MDR calculations, and Playwright (Java) automation. Employee of the Month at Credopay.
+    </p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary">↓ Get in Touch</a>
+      <a href="#experience" class="btn btn-outline">View Experience →</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">1850+</div>
+        <div class="stat-label">Test Cases Written</div>
+      </div>
+      <div>
+        <div class="stat-num">50+</div>
+        <div class="stat-label">Defects Tracked</div>
+      </div>
+      <div>
+        <div class="stat-num">3</div>
+        <div class="stat-label">Live Fintech Platforms</div>
+      </div>
+      <div>
+        <div class="stat-num">1+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Work Experience</div>
+  <h2 class="section-title reveal">Where I've<br>been building.</h2>
+
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <div class="timeline-header">
+        <div>
+          <div class="timeline-role">Junior Test Engineer</div>
+          <div class="timeline-company">— Credopay</div>
+        </div>
+        <div class="timeline-date">July 2025 – Present</div>
+      </div>
+      <ul class="timeline-points">
+        <li>Designed & executed 1000+ test cases (positive, negative, edge, performance) across 3 live fintech platforms: OmPay, Bank Nizwa, CenterFirst</li>
+        <li>Identified, documented & tracked 50+ defects in ClickUp with root cause analysis and post-fix verification</li>
+        <li>Executed UI testing across merchant management and payout workflows ensuring data integrity and UI consistency</li>
+        <li>Supported UAT, unit test validation, and production releases within Agile sprint timelines</li>
+        <li>Participated in sprint planning, daily standups, and retrospectives in an Agile Scrum team</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-header">
+        <div>
+          <div class="timeline-role">Software Testing Intern</div>
+          <div class="timeline-company">— Credopay</div>
+        </div>
+        <div class="timeline-date">April 2025 – June 2025</div>
+      </div>
+      <ul class="timeline-points">
+        <li>Performed manual testing and API testing for core fintech workflows</li>
+        <li>Documented defect reports in ClickUp following the defect lifecycle</li>
+        <li>Conducted UI testing and API validation using Postman</li>
+        <li>Built foundational automation skills using Playwright; transitioned to full-time in 3 months</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Technical Skills</div>
+  <h2 class="section-title reveal">What I work<br>with.</h2>
+
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-card-label">Testing & QA</div>
+      <div class="skill-tags">
+        <span class="tag">Manual Testing</span>
+        <span class="tag">Functional</span>
+        <span class="tag">Regression</span>
+        <span class="tag">Integration</span>
+        <span class="tag">Smoke/Sanity</span>
+        <span class="tag">UI Testing</span>
+        <span class="tag">API Testing</span>
+        <span class="tag">UAT</span>
+        <span class="tag">Black-Box</span>
+        <span class="tag">Root Cause Analysis</span>
+      </div>
+    </div>
+
+    <div class="skill-card reveal">
+      <div class="skill-card-label">Automation</div>
+      <div class="skill-tags">
+        <span class="tag">Playwright (Java)</span>
+        <span class="tag">Selenium WebDriver</span>
+        <span class="tag">TestNG</span>
+        <span class="tag">Page Object Model</span>
+        <span class="tag">GitHub Actions</span>
+        <span class="tag">Jenkins</span>
+        <span class="tag">CI/CD</span>
+      </div>
+    </div>
+
+    <div class="skill-card reveal">
+      <div class="skill-card-label">Tools & Stack</div>
+      <div class="skill-tags">
+        <span class="tag">Postman</span>
+        <span class="tag">ClickUp</span>
+        <span class="tag">MS Office</span>
+        <span class="tag">JSON / XML</span>
+        <span class="tag">Java</span>
+        <span class="tag">Python</span>
+        <span class="tag">MySQL</span>
+      </div>
+    </div>
+
+    <div class="skill-card reveal">
+      <div class="skill-card-label">Methodologies</div>
+      <div class="skill-tags">
+        <span class="tag">Agile Scrum</span>
+        <span class="tag">SDLC</span>
+        <span class="tag">STLC</span>
+        <span class="tag">Defect Lifecycle</span>
+        <span class="tag">Sprint Delivery</span>
+        <span class="tag">Test Case Design</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Projects</div>
+  <h2 class="section-title reveal">Platforms I've<br>tested in production.</h2>
+
+  <div class="projects-grid">
+    <div class="project-card reveal">
+      <div class="project-num">01</div>
+      <div class="project-title">Bank Nizwa</div>
+      <div class="project-scope">Merchant Settlement · GMV · MDR · Payout</div>
+      <p class="project-desc">Designed & executed 1000+ test cases covering positive, negative, edge case, and performance scenarios. Used Postman to simulate end-to-end transactions, validate settlement calculations, and verify API responses for payment and reconciliation workflows. Validated daily and bulk settlement reports.</p>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">02</div>
+      <div class="project-title">OmPay</div>
+      <div class="project-scope">Settlements · Payouts · MDR · Refund Adjustments</div>
+      <p class="project-desc">Authored 350+ test cases across all scenario types. Leveraged Postman for transaction simulation — verified MDR rates, payout splits, and refund adjustment accuracy. Validated HTTP responses, status codes, and payload data for settlement APIs.</p>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">03</div>
+      <div class="project-title">CenterFirst</div>
+      <div class="project-scope">Merchant Management · MDR Setup · GMV · Multi-level Hierarchy</div>
+      <p class="project-desc">Developed 500+ test cases for merchant management, MDR setup, GMV rules, and payout configurations across multi-level merchant hierarchies. Executed functional, regression, and integration testing with Postman for merchant onboarding and payout config APIs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section>
+  <div class="section-label">Certifications</div>
+  <h2 class="section-title reveal">Credentials.</h2>
+
+  <div class="certs-list reveal">
+    <div class="cert-item">
+      <div class="cert-icon">📋</div>
+      <div>
+        <div class="cert-name">Software Testing Certification</div>
+        <div class="cert-issuer">SLA + IBM · 2024</div>
+      </div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-icon">☕</div>
+      <div>
+        <div class="cert-name">Java Fundamentals — IBMCE CEJAVAIN</div>
+        <div class="cert-issuer">IBM · 2024</div>
+      </div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-icon">🗄️</div>
+      <div>
+        <div class="cert-name">MySQL</div>
+        <div class="cert-issuer">Spoken Tutorial</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section>
+  <div class="section-label">Achievements</div>
+  <h2 class="section-title reveal">Recognition.</h2>
+
+  <div class="achievement-banner reveal">
+    <div class="achievement-icon">🏆</div>
+    <div class="achievement-text">
+      <strong>Employee of the Month — Credopay</strong>
+      <p>Recognised for consistent performance, quality delivery, and contribution to critical fintech projects across multiple live platforms.</p>
+    </div>
+  </div>
+
+  <div class="achievement-banner reveal">
+    <div class="achievement-icon">🚀</div>
+    <div class="achievement-text">
+      <strong>Intern → Full-Time in 3 Months</strong>
+      <p>Successfully transitioned from intern to full-time Junior Test Engineer through demonstrated performance and rapid skill development.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Contact</div>
+  <h2 class="section-title reveal">Let's connect.</h2>
+
+  <div class="contact-grid reveal">
+    <a class="contact-card" href="mailto:aswinapr6385@gmail.com">
+      <div class="contact-icon">✉️</div>
+      <div>
+        <div class="contact-label">Email</div>
+        <div class="contact-value">aswinapr6385@gmail.com</div>
+      </div>
+    </a>
+
+    <a class="contact-card" href="tel:+916385715905">
+      <div class="contact-icon">📱</div>
+      <div>
+        <div class="contact-label">Phone</div>
+        <div class="contact-value">+91 6385715905</div>
+      </div>
+    </a>
+
+    <a class="contact-card" href="https://linkedin.com/in/aswin-p-r-624660283" target="_blank">
+      <div class="contact-icon">💼</div>
+      <div>
+        <div class="contact-label">LinkedIn</div>
+        <div class="contact-value">aswin-p-r-624660283</div>
+      </div>
+    </a>
+
+    <div class="contact-card">
+      <div class="contact-icon">📍</div>
+      <div>
+        <div class="contact-label">Location</div>
+        <div class="contact-value">Kanyakumari, Tamil Nadu, India</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  Built with purpose · <span>Aswin P.R.</span> · Junior Test Engineer · 2025
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
