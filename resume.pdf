@@ -1,0 +1,66 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R
+   /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 2933 >>
+stream
+BT /F1 18 Tf 50 740 Td (ASWIN P.R. - SOFTWARE TEST ENGINEER) Tj ET
+BT /F2 10 Tf 50 722 Td (Email: aswinapr6385@gmail.com | Phone: +91 6385715905 | Kanyakumari, Tamil Nadu, India) Tj ET
+BT /F2 10 Tf 50 708 Td (LinkedIn: linkedin.com/in/aswin-p-r-624660283 | GitHub: github.com/aswinapr6385-maker) Tj ET
+BT /F1 12 Tf 50 680 Td (PROFESSIONAL SUMMARY) Tj ET
+BT /F2 9 Tf 50 664 Td (Software Test Engineer with 1+ year experience in manual testing of enterprise web apps in fintech.) Tj ET
+BT /F2 9 Tf 50 652 Td (Experienced in functional, regression, UAT, Postman API testing, SQL validation, JMeter, and ClickUp.) Tj ET
+BT /F1 12 Tf 50 626 Td (PROFESSIONAL EXPERIENCE) Tj ET
+BT /F1 10 Tf 50 610 Td (Credopay - Junior Test Engineer | July 2025 - July 2026) Tj ET
+BT /F2 9 Tf 60 596 Td (- Executed 1,000+ test cases per cycle across 3 live fintech apps: Bank Nizwa, CenterFirst, OmPay) Tj ET
+BT /F2 9 Tf 60 584 Td (- Validated merchant management, payment, settlement, payout, and reporting modules) Tj ET
+BT /F2 9 Tf 60 572 Td (- Performed Postman API testing validating requests/responses, status codes, JSON/XML payloads) Tj ET
+BT /F2 9 Tf 60 560 Td (- Validated backend data using SQL queries; tracked 50+ defects using ClickUp) Tj ET
+BT /F2 9 Tf 60 548 Td (- Conducted Apache JMeter performance testing and collaborated in Agile sprint ceremonies) Tj ET
+BT /F1 10 Tf 50 528 Td (Credopay - Software Testing Intern | April 2025 - June 2025) Tj ET
+BT /F2 9 Tf 60 514 Td (- Developed and executed functional/regression test cases, Postman API validation, and ClickUp bug tracking) Tj ET
+BT /F1 12 Tf 50 488 Td (SELF-DRIVEN AUTOMATION PROJECTS) Tj ET
+BT /F1 10 Tf 50 472 Td (QA_ShopEase - Web Automation Testing Framework) Tj ET
+BT /F2 9 Tf 60 458 Td (- Developed UI & API automation framework using Playwright with Java and Page Object Model (POM)) Tj ET
+BT /F2 9 Tf 60 446 Td (- Automated 15-30 workflows; executed with TestNG; managed with Maven, Git/GitHub, and Jenkins CI/CD) Tj ET
+BT /F1 12 Tf 50 420 Td (TECHNICAL SKILLS) Tj ET
+BT /F2 9 Tf 50 404 Td (Manual Testing: Functional, Regression, Integration, Smoke, Sanity, UAT, E2E, Test Plans & Design) Tj ET
+BT /F2 9 Tf 50 392 Td (API & Data: Postman, REST API, JSON, XML, SQL Validation, Backend Data Flow Integrity) Tj ET
+BT /F2 9 Tf 50 380 Td (Tools: ClickUp, Jira Knowledge, Apache JMeter, Git, GitHub, Maven, Jenkins CI/CD) Tj ET
+BT /F2 9 Tf 50 368 Td (Automation & Lang: Playwright with Java, Selenium WebDriver, TestNG, POM, Java, Python (Basic)) Tj ET
+BT /F1 12 Tf 50 342 Td (CERTIFICATIONS & ACHIEVEMENTS) Tj ET
+BT /F2 9 Tf 50 326 Td (- Software Testing Certification: SLA + IBM | 2024) Tj ET
+BT /F2 9 Tf 50 314 Td (- Java Fundamentals (IBMCE CEJAVAIN): IBM | 2024) Tj ET
+BT /F2 9 Tf 50 302 Td (- MySQL: Spoken Tutorial) Tj ET
+BT /F2 9 Tf 50 290 Td (- Employee of the Month: Credopay) Tj ET
+BT /F2 9 Tf 50 278 Td (- Intern to Junior Test Engineer Promotion in 3 Months) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000282 00000 n 
+0000000350 00000 n 
+0000000427 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+3384
+%%EOF
